@@ -12,8 +12,6 @@ keymap("n", "<Leader>sv", ":luafile ~/.config/nvim/lua/config/keymaps.lua", opts
 -- Edit
 keymap("n", "-", "ddp", opts)
 keymap("n", "+", "ddkP", opts)
-keymap("n", "H", "0", opts)
-keymap("n", "L", "$", opts)
 keymap("n", "/", "/\\v", opts)
 keymap("v", "<leader>c", [["*y]], opts)
 keymap("n", "<leader>ac", [[gg"*yG]], opts)
