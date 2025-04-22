@@ -6,8 +6,8 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("t", "jk", "<C-\\><C-n>")
 
 -- Edit and source keymap.lua
-keymap("n", "<Leader>ev", ":vsplit ~/.config/nvim/lua/config/keymaps.lua", opts)
-keymap("n", "<Leader>sv", ":luafile ~/.config/nvim/lua/config/keymaps.lua", opts)
+keymap("n", "<Leader>ev", ":vsplit ~/.config/nvim/init.lua", opts)
+keymap("n", "<Leader>sv", ":luafile ~/.config/nvim/init.lua", opts)
 
 -- Edit
 keymap("n", "-", "ddp", opts)
