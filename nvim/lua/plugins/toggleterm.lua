@@ -14,6 +14,14 @@ return {
         desc = "ToggleTerm (float root_dir)",
       },
       {
+        "<D-j>",
+        function()
+          local count = vim.v.count1
+          require("toggleterm").toggle(count, 15, vim.fn.getcwd(), "horizontal")
+        end,
+        desc = "ToggleTerm (horizontal current_dir)",
+      },
+      {
         "<leader>Th",
         function()
           local count = vim.v.count1
