@@ -22,6 +22,14 @@ return {
         desc = "ToggleTerm (horizontal current_dir)",
       },
       {
+        "<D-k>",
+        function()
+          local count = vim.v.count1
+          require("toggleterm").toggle(count, vim.o.columns * 0.4, vim.fn.getcwd(), "vertical")
+        end,
+        desc = "ToggleTerm (vertical root_dir)",
+      },
+      {
         "<leader>Th",
         function()
           local count = vim.v.count1
@@ -77,7 +85,7 @@ return {
       insert_mappings = true, -- whether or not the open mapping applies in insert mode
       terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
       persist_size = true,
-      direction = "horizontal" or "vertical" or "window" or "float",
+      direction = "horizontal",
       close_on_exit = true, -- close the terminal window when the process exits
     },
   },

@@ -40,7 +40,6 @@
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.wordWrap": "on",
-  // stylelint
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
@@ -51,6 +50,17 @@
   "typescript.implementationsCodeLens.enabled": true,
   "typescript.referencesCodeLens.enabled": true,
   "javascript.referencesCodeLens.enabled": true,
-  "github.copilot.editor.enableAutoCompletions": true,
-  "haskell.manageHLS": "GHCup"
+  "haskell.manageHLS": "GHCup",
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('vscode-neovim.escape')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  }
 }
