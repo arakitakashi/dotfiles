@@ -69,10 +69,11 @@
   "leetcode.hint.commandShortcut": false,
   "leetcode.filePath": {
     "default": {
-      "folder": "./leetcode",
-      "filename": "${id}.${kebab-case-name}.${ext}"
+      "folder": "./leetcode/src",
+      "filename": "_${id}_${snake_case_name}.${ext}"
     }
   },
   "leetcode.hint.commentDescription": false,
-  "rust-analyzer.debug.engine": "vadimcn.vscode-lldb"
+  "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
+  "rust-analyzer.diagnostics.disabled": ["unlinked-file"]
 }
