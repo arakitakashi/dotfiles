@@ -3,6 +3,7 @@ export LANG=en_US.UTF-8
 alias pn="pnpm"
 # nvim
 alias vi="nvim"
+alias vin="nvim -u NONE"
 alias view="nvim -R" 
 
 # tmux
@@ -25,10 +26,6 @@ fi
 
 PS1='[%n] %~ $ '
 export PATH=$PATH:~/.bin
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-source "$HOME/.rye/env"
-
 
 # pnpm
 export PNPM_HOME="/Users/arakitakashi/Library/pnpm"
