@@ -38,6 +38,9 @@
   "[typescript]": {
     "editor.formatOnSave": true
   },
+  "[terraform]": {
+    "editor.formatOnSave": true
+  },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.wordWrap": "on",
   "css.validate": false,
