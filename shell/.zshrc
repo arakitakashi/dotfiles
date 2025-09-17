@@ -7,7 +7,7 @@ alias vin="nvim -u NONE"
 alias view="nvim -R" 
 
 # tmux
-if [[ -z "$TMUX_PANE" ]]; then
+if [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
   session_name="${USER}-$(date +%s)"
   tmux new-session -A -s "$session_name"
 fi
@@ -34,11 +34,12 @@ esac
 # pnpm end
 
 [ -f "/Users/arakitakashi/.ghcup/env" ] && . "/Users/arakitakashi/.ghcup/env" # ghcup-envexport PATH="/Users/arakitakashi/.local/bin:$PATH"
-export PATH="/Users/arakitakashi/.stack/programs/aarch64-osx/ghc-9.6.6/bin:$PATH"
-export PATH="/Users/arakitakashi/.local/bin:$PATH"
 
-[ -f "/Users/arakitakashi/.ghcup/env" ] && . "/Users/arakitakashi/.ghcup/env" # ghcup-env
-export PATH=$(stack path --local-bin):$PATH
+if command -v stack >/dev/null 2>&1; then
+  export PATH="/Users/arakitakashi/.stack/programs/aarch64-osx/ghc-9.6.6/bin:$PATH"
+  export PATH="/Users/arakitakashi/.local/bin:$PATH"
+  export PATH=$(stack path --local-bin):$PATH
+fi
 
 export PATH=/usr/local/mysql/bin:$PATH
 export PATH=$PATH:/opt/homebrew/Cellar/postgresql@17/17.5/bin
