@@ -78,5 +78,6 @@
   },
   "leetcode.hint.commentDescription": false,
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
-  "rust-analyzer.diagnostics.disabled": ["unlinked-file"]
+  "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
+  "docker.extension.enableComposeLanguageServer": false
 }
