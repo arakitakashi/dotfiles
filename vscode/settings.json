@@ -41,6 +41,11 @@
   "[terraform]": {
     "editor.formatOnSave": true
   },
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.env.osx": {
+    "COLORTERM": ""
+  },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.wordWrap": "on",
   "css.validate": false,
@@ -78,5 +83,8 @@
   },
   "leetcode.hint.commentDescription": false,
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
-  "rust-analyzer.diagnostics.disabled": ["unlinked-file"]
+  "rust-analyzer.diagnostics.disabled": [
+    "unlinked-file"
+  ],
+  "editor.fontFamily": "Berkeley Mono, Monaco, 'Courier New', monospace"
 }
