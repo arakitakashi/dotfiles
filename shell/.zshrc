@@ -1,4 +1,16 @@
-export LANG=en_US.UTF-8 
+export LANG=en_US.UTF-8
+
+# Disable OSC sequences in tmux
+if [[ -n "$TMUX" ]]; then
+  export TERM=screen-256color
+  # Prevent zsh from querying terminal colors
+  unset zle_bracketed_paste
+  PROMPT_EOL_MARK=''
+fi
+
+# Disable terminal color queries globally
+typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=false
+
 # general alias
 alias pn="pnpm"
 # nvim

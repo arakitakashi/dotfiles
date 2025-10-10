@@ -1,5 +1,5 @@
 theme = Dracula
-font-family = HackGen Console NF Regular
+font-family = Berkeley Mono
 font-feature = -dlig
 font-size = 12
 background-opacity = 0.85
