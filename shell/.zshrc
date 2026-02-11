@@ -17,6 +17,7 @@ alias pn="pnpm"
 alias vi="nvim"
 alias vin="nvim -u NONE"
 alias view="nvim -R" 
+alias cc="claude --dangerously-skip-permissions"
 
 # tmux
 if [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
@@ -57,3 +58,20 @@ export PATH=/usr/local/mysql/bin:$PATH
 export PATH=$PATH:/opt/homebrew/Cellar/postgresql@17/17.5/bin
 export PATH=$HOME/go/bin:$PATH
 eval "$(~/.local/bin/mise activate zsh)"
+
+# bun completions
+[ -s "/Users/arakitakashi/.bun/_bun" ] && source "/Users/arakitakashi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/arakitakashi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/arakitakashi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/arakitakashi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/arakitakashi/google-cloud-sdk/completion.zsh.inc'; fi
