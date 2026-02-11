@@ -3,7 +3,7 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.addMissingImports": "explicit"
+    "source.addMissingImports": "explicit",
   },
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
@@ -13,38 +13,41 @@
   "prettier.trailingComma": "es5",
   "prettier.arrowParens": "always",
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "workbench.colorTheme": "Iceberg",
   "editor.linkedEditing": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "gitlens.advanced.messages": {
-    "suppressGitMissingWarning": true
+    "suppressGitMissingWarning": true,
   },
   "eslint.enable": true,
   "editor.inlineSuggest.enabled": true,
+  "[astro]": {
+    "editor.formatOnSave": true,
+  },
   "[graphql]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[json]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[typescript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[terraform]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.inheritEnv": false,
   "terminal.integrated.env.osx": {
-    "COLORTERM": ""
+    "COLORTERM": "",
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.wordWrap": "on",
@@ -52,7 +55,7 @@
   "less.validate": false,
   "scss.validate": false,
   "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
+    "asvetliakov.vscode-neovim": 1,
   },
   "git.autofetch": true,
   "typescript.implementationsCodeLens.enabled": true,
@@ -66,10 +69,10 @@
         [
           "local code = require('vscode')",
           "code.action('vscode-neovim.escape')",
-          "code.action('workbench.action.files.save')"
-        ]
-      ]
-    }
+          "code.action('workbench.action.files.save')",
+        ],
+      ],
+    },
   },
   "leetcode.defaultLanguage": "rust",
   "leetcode.workspaceFolder": "/Users/arakitakashi/.leetcode",
@@ -78,13 +81,15 @@
   "leetcode.filePath": {
     "default": {
       "folder": "./leetcode/src",
-      "filename": "_${id}_${snake_case_name}.${ext}"
-    }
+      "filename": "_${id}_${snake_case_name}.${ext}",
+    },
   },
   "leetcode.hint.commentDescription": false,
   "rust-analyzer.debug.engine": "vadimcn.vscode-lldb",
-  "rust-analyzer.diagnostics.disabled": [
-    "unlinked-file"
-  ],
-  "editor.fontFamily": "Berkeley Mono, Monaco, 'Courier New', monospace"
+  "rust-analyzer.diagnostics.disabled": ["unlinked-file"],
+  "editor.fontFamily": "Berkeley Mono, Monaco, 'Courier New', monospace",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "claudeCode.preferredLocation": "panel",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "editor.accessibilitySupport": "on",
 }
