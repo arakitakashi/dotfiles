@@ -1,0 +1,6 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Claude harness のバックアップ（一時ファイル）
+.claude/backups/
