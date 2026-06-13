@@ -18,6 +18,7 @@ alias vi="nvim"
 alias vin="nvim -u NONE"
 alias view="nvim -R" 
 alias cc="claude --dangerously-skip-permissions"
+alias gw="git worktree"
 
 # tmux
 if [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
