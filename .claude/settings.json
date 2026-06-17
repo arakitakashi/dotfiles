@@ -1,0 +1,129 @@
+{
+  "cleanupPeriodDays": 60,
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(git rev-parse *)",
+      "Bash(git remote *)",
+      "Bash(uv *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr status *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue list *)",
+      "Bash(gh repo view *)",
+      "Bash(gh repo list *)",
+      "Bash(gh run view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run watch *)",
+      "Bash(gh api -X GET *)",
+      "Bash(gh api repos/*)",
+      "Bash(gh api orgs/*)",
+      "Bash(npm run *)",
+      "Bash(npm ls *)",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)",
+      "Bash(npx prettier *)",
+      "Bash(npx eslint *)",
+      "Bash(npx vitest *)",
+      "Bash(npx jest *)",
+      "Bash(npx @redocly/cli *)",
+      "Bash(npx @stoplight/spectral-cli *)",
+      "mcp__atlassian__*",
+      "mcp__context7__*",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_navigate_back",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_network_request",
+      "mcp__playwright__browser_wait_for",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_tabs",
+      "mcp__playwright__browser_close"
+    ],
+    "deny": [
+      "Bash(sed -i*)",
+      "Bash(find * -delete*)",
+      "Bash(find * -exec *)",
+      "Bash(find * -execdir *)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf ~/*)",
+      "Bash(rm -rf $HOME*)",
+      "Bash(git push --force origin main*)",
+      "Bash(git push --force origin master*)",
+      "Bash(git push -f origin main*)",
+      "Bash(git push -f origin master*)"
+    ],
+    "ask": [
+      "Bash(git push*)",
+      "Bash(gh pr create*)",
+      "Bash(gh pr merge*)",
+      "Bash(gh pr edit*)",
+      "Bash(gh pr close*)",
+      "Bash(gh pr reopen*)",
+      "Bash(gh pr review*)",
+      "Bash(gh pr comment*)",
+      "Bash(gh issue create*)",
+      "Bash(gh issue close*)",
+      "Bash(gh issue comment*)",
+      "Bash(gh api -X POST *)",
+      "Bash(gh api -X PUT *)",
+      "Bash(gh api -X PATCH *)",
+      "Bash(gh api -X DELETE *)",
+      "Bash(npm publish*)",
+      "Bash(npm install*)",
+      "Bash(npm ci*)",
+      "mcp__atlassian__createJiraIssue",
+      "mcp__atlassian__editJiraIssue",
+      "mcp__atlassian__addCommentToJiraIssue",
+      "mcp__atlassian__addWorklogToJiraIssue",
+      "mcp__atlassian__transitionJiraIssue",
+      "mcp__atlassian__createIssueLink",
+      "mcp__atlassian__createConfluencePage",
+      "mcp__atlassian__updateConfluencePage",
+      "mcp__atlassian__createConfluenceFooterComment",
+      "mcp__atlassian__createConfluenceInlineComment"
+    ],
+    "defaultMode": "default",
+    "additionalDirectories": [
+      "~/Documents/obsidian_vault",
+      "~/dotfiles"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /Users/arakitakashi/dotfiles/.claude/hooks/ruff_format.py"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "example-skills@anthropic-agent-skills": true
+  },
+  "language": "japanese",
+  "skipDangerousModePermissionPrompt": true,
+  "fileCheckpointingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1753993253640
+  },
+  "skipWorkflowUsageWarning": true
+}
