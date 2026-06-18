@@ -14,6 +14,7 @@
       "Bash(git rev-parse *)",
       "Bash(git remote *)",
       "Bash(uv *)",
+      "Bash(jq *)",
       "Bash(gh pr view *)",
       "Bash(gh pr diff *)",
       "Bash(gh pr list *)",

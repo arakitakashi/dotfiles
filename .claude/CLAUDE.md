@@ -22,3 +22,4 @@
 ---
 
 - Python の環境・ツール規約（uv/ruff/mise）は **python-dev スキル** が必要時に自動参照する
+- JSON の読み取り・抽出は `python3 -c` ではなく `jq` を使う（任意コード実行を避けるため。`Bash(jq *)` は許可済み）。例: `jq -r '[.. | objects | .body? | select(type=="string")] | first' input.json`
