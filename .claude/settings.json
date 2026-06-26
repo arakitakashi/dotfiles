@@ -122,9 +122,10 @@
   },
   "language": "japanese",
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "fileCheckpointingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1753993253640
   },
-  "skipWorkflowUsageWarning": true
+  "tui": "fullscreen"
 }
