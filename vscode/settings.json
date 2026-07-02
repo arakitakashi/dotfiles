@@ -91,10 +91,9 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "claudeCode.preferredLocation": "panel",
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
-  "editor.accessibilitySupport": "on",
+  "editor.accessibilitySupport": "auto",
   "hediet.vscode-drawio.resizeImages": null,
   "json.schemaDownload.trustedDomains": {
-    "https://schemastore.azurewebsites.net/": true,
     "https://raw.githubusercontent.com/": true,
     "https://www.schemastore.org/": true,
     "https://json.schemastore.org/": true,
@@ -110,4 +109,11 @@
     "*.svg": "hediet.vscode-drawio-text",
   },
   "biome.suggestInstallingGlobally": false,
+  // 日本語コメント・文字列を一律で強調する nonBasicASCII を無効化する
+  // （日本語全体に波線が付くのを防ぐ）。
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  // Trojan Source 攻撃(CVE-2021-42574)対策の本体である「紛らわしい文字」と
+  // 「不可視文字」の検出は残す。全角スペース紛れ込みやゼロ幅文字混入を検知できる。
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.invisibleCharacters": true,
 }
