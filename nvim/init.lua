@@ -1,5 +1,6 @@
 require("config.options")
-if vim.fn.has("unix") == 1 and vim.fn.system("uname -a"):match("Ubuntu") then
+-- Ubuntu ではプラグインを使わない最小構成（外部プロセスを起動しない判定）
+if vim.uv.os_uname().version:match("Ubuntu") then
   require("config.keymaps")
 else
   require("config.lazy")

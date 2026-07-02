@@ -48,11 +48,14 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "haskell",
   callback = function()
-    -- haskell-tools
-    local ht = require("haskell-tools")
-    vim.keymap.set("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
-    vim.keymap.set("n", "<leader>rr", ht.repl.toggle, opts)
-    vim.keymap.set("n", "<leader>rq", ht.repl.quit, opts)
+    -- haskell-tools（プラグインなし環境ではスキップ）
+    local ok, ht = pcall(require, "haskell-tools")
+    if ok then
+      local buf_opts = { noremap = true, silent = true, buffer = true }
+      vim.keymap.set("n", "<leader>hs", ht.hoogle.hoogle_signature, buf_opts)
+      vim.keymap.set("n", "<leader>rr", ht.repl.toggle, buf_opts)
+      vim.keymap.set("n", "<leader>rq", ht.repl.quit, buf_opts)
+    end
     -- set function
     vim.keymap.set("i", "<C-u>", function()
       local line = vim.api.nvim_get_current_line()
