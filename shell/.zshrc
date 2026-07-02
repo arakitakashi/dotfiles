@@ -2,77 +2,63 @@ export LANG=en_US.UTF-8
 
 # Disable OSC sequences in tmux
 if [[ -n "$TMUX" ]]; then
-  export TERM=screen-256color
+  export TERM=tmux-256color
   # Prevent zsh from querying terminal colors
   unset zle_bracketed_paste
   PROMPT_EOL_MARK=''
 fi
-
-# Disable terminal color queries globally
-typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=false
 
 # general alias
 alias pn="pnpm"
 # nvim
 alias vi="nvim"
 alias vin="nvim -u NONE"
-alias view="nvim -R" 
-alias cc="claude --dangerously-skip-permissions"
+alias view="nvim -R"
+# cc はシステムの C コンパイラを隠すため cl を使う
+alias cl="claude --dangerously-skip-permissions"
 alias gw="git worktree"
 
-# tmux
-if [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
-  session_name="${USER}-$(date +%s)"
-  tmux new-session -A -s "$session_name"
+# tmux: main セッションに接続（なければ作成）
+if command -v tmux >/dev/null 2>&1 \
+  && [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
+  tmux new-session -A -s main
 fi
-
-# # Add git branch if its present to PS1
-# parse_git_branch() {
-#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-# }
-# if [ "$color_prompt" = yes ]; then
-#  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
-# else
-#  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
-# fi
 
 PS1='[%n] %~ $ '
 export PATH=$PATH:~/.bin
 
 # pnpm
-export PNPM_HOME="/Users/arakitakashi/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-[ -f "/Users/arakitakashi/.ghcup/env" ] && . "/Users/arakitakashi/.ghcup/env" # ghcup-envexport PATH="/Users/arakitakashi/.local/bin:$PATH"
+# ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
+export PATH="$HOME/.local/bin:$PATH"
 
 if command -v stack >/dev/null 2>&1; then
-  export PATH="/Users/arakitakashi/.stack/programs/aarch64-osx/ghc-9.6.6/bin:$PATH"
-  export PATH="/Users/arakitakashi/.local/bin:$PATH"
+  export PATH="$HOME/.stack/programs/aarch64-osx/ghc-9.6.6/bin:$PATH"
   export PATH=$(stack path --local-bin):$PATH
 fi
 
 export PATH=/usr/local/mysql/bin:$PATH
-export PATH=$PATH:/opt/homebrew/Cellar/postgresql@17/17.5/bin
+# opt/ 配下は brew が管理するバージョン非依存のシンボリックリンク
+export PATH=$PATH:/opt/homebrew/opt/postgresql@17/bin
 export PATH=$HOME/go/bin:$PATH
 eval "$(~/.local/bin/mise activate zsh)"
 
 # bun completions
-[ -s "/Users/arakitakashi/.bun/_bun" ] && source "/Users/arakitakashi/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/arakitakashi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/arakitakashi/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/arakitakashi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/arakitakashi/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
