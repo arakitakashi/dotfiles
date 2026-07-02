@@ -13,7 +13,15 @@
       "Bash(git stash *)",
       "Bash(git rev-parse *)",
       "Bash(git remote *)",
-      "Bash(uv *)",
+      "Bash(uv add *)",
+      "Bash(uv remove *)",
+      "Bash(uv sync*)",
+      "Bash(uv lock*)",
+      "Bash(uv pip list*)",
+      "Bash(uv run ruff *)",
+      "Bash(uv run pytest*)",
+      "Bash(uv run pyright*)",
+      "Bash(uvx ruff *)",
       "Bash(jq *)",
       "Bash(gh pr view *)",
       "Bash(gh pr diff *)",
@@ -40,7 +48,27 @@
       "Bash(npx jest *)",
       "Bash(npx @redocly/cli *)",
       "Bash(npx @stoplight/spectral-cli *)",
-      "mcp__atlassian__*",
+      "mcp__atlassian__atlassianUserInfo",
+      "mcp__atlassian__fetch",
+      "mcp__atlassian__getAccessibleAtlassianResources",
+      "mcp__atlassian__getConfluenceCommentChildren",
+      "mcp__atlassian__getConfluencePage",
+      "mcp__atlassian__getConfluencePageDescendants",
+      "mcp__atlassian__getConfluencePageFooterComments",
+      "mcp__atlassian__getConfluencePageInlineComments",
+      "mcp__atlassian__getConfluenceSpaces",
+      "mcp__atlassian__getIssueLinkTypes",
+      "mcp__atlassian__getJiraIssue",
+      "mcp__atlassian__getJiraIssueRemoteIssueLinks",
+      "mcp__atlassian__getJiraIssueTypeMetaWithFields",
+      "mcp__atlassian__getJiraProjectIssueTypesMetadata",
+      "mcp__atlassian__getPagesInConfluenceSpace",
+      "mcp__atlassian__getTransitionsForJiraIssue",
+      "mcp__atlassian__getVisibleJiraProjects",
+      "mcp__atlassian__lookupJiraAccountId",
+      "mcp__atlassian__search",
+      "mcp__atlassian__searchConfluenceUsingCql",
+      "mcp__atlassian__searchJiraIssuesUsingJql",
       "mcp__context7__*",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_navigate_back",
@@ -111,7 +139,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/arakitakashi/dotfiles/.claude/hooks/ruff_format.py"
+            "command": "python3 \"$HOME/dotfiles/.claude/hooks/ruff_format.py\""
           }
         ]
       }
@@ -121,11 +149,8 @@
     "example-skills@anthropic-agent-skills": true
   },
   "language": "japanese",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
-  "fileCheckpointingEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1753993253640
-  },
-  "tui": "fullscreen"
+  "fileCheckpointingEnabled": true
 }

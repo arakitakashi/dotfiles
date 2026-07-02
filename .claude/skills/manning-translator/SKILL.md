@@ -47,7 +47,7 @@ grep -cE "^chapter (one|two|three|four|five|six|seven|eight|nine|ten)$" "$FILE"
 `scripts/check_source.sh` を実行:
 
 ```bash
-bash /Users/arakitakashi/.claude/skills/manning-translator/scripts/check_source.sh "<原文ファイル>"
+bash ~/.claude/skills/manning-translator/scripts/check_source.sh "<原文ファイル>"
 ```
 
 出力例:
@@ -64,7 +64,7 @@ livebook UI 残骸: 14 個
 `scripts/recover_line_numbers.py` を実行:
 
 ```bash
-uv run python /Users/arakitakashi/.claude/skills/manning-translator/scripts/recover_line_numbers.py "<原文ファイル>"
+uv run python ~/.claude/skills/manning-translator/scripts/recover_line_numbers.py "<原文ファイル>"
 ```
 
 行番号インライン文字列を除去し、後続の生コードを ` ``` ` で囲んでコードブロック化する。出力に救済件数が表示される。
@@ -80,7 +80,7 @@ uv run python /Users/arakitakashi/.claude/skills/manning-translator/scripts/reco
 選択2の場合、`scripts/placeholder_corrupted.py` を実行:
 
 ```bash
-uv run python /Users/arakitakashi/.claude/skills/manning-translator/scripts/placeholder_corrupted.py "<原文ファイル>"
+uv run python ~/.claude/skills/manning-translator/scripts/placeholder_corrupted.py "<原文ファイル>"
 ```
 
 ### Step 2〜8. 翻訳と検証
