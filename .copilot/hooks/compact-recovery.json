@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "preCompact": [
+      {
+        "type": "command",
+        "bash": "\"$HOME/dotfiles/.copilot/scripts/precompact-save-state.sh\"",
+        "timeoutSec": 30
+      }
+    ]
+  }
+}
