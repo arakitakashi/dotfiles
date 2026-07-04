@@ -132,6 +132,11 @@
       "~/dotfiles"
     ]
   },
+  "model": "claude-fable-5[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "\"$HOME/dotfiles/.claude/hooks/statusline.sh\""
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -140,6 +145,35 @@
           {
             "type": "command",
             "command": "python3 \"$HOME/dotfiles/.claude/hooks/ruff_format.py\""
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/dotfiles/.claude/hooks/compaction-recovery.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/dotfiles/.claude/hooks/userpromptsubmit-compaction-recovery.sh\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/dotfiles/.claude/hooks/userpromptsubmit-compact-prep-reminder.sh\""
           }
         ]
       }
