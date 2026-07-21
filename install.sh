@@ -31,6 +31,9 @@ fi
 # Neovim
 link "$DOTFILES/nvim" "$HOME/.config/nvim"
 
+# herdr（~/.config/herdr はソケット・ログ等のランタイムファイルを含むため config.toml のみリンクする）
+link "$DOTFILES/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+
 # Ghostty（macOS は Application Support 配下を読む）
 link "$DOTFILES/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 
