@@ -116,4 +116,5 @@
   // 「不可視文字」の検出は残す。全角スペース紛れ込みやゼロ幅文字混入を検知できる。
   "editor.unicodeHighlight.ambiguousCharacters": true,
   "editor.unicodeHighlight.invisibleCharacters": true,
+  "chat.viewSessions.orientation": "stacked",
 }
