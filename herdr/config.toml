@@ -1,3 +1,4 @@
+onboarding = false
 # herdr 設定 — tmux (~/dotfiles/tmux/.tmux.conf) の操作感を移植
 # デフォルト全体は `herdr --default-config`、検証は `herdr config check`
 
