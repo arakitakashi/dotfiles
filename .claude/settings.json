@@ -126,17 +126,13 @@
       "mcp__atlassian__createConfluenceFooterComment",
       "mcp__atlassian__createConfluenceInlineComment"
     ],
-    "defaultMode": "default",
+    "defaultMode": "auto",
     "additionalDirectories": [
       "~/Documents/obsidian_vault",
       "~/dotfiles"
     ]
   },
   "model": "claude-fable-5[1m]",
-  "statusLine": {
-    "type": "command",
-    "command": "\"$HOME/dotfiles/.claude/hooks/statusline.sh\""
-  },
   "hooks": {
     "PostToolUse": [
       {
@@ -190,6 +186,10 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "\"$HOME/dotfiles/.claude/hooks/statusline.sh\""
   },
   "enabledPlugins": {
     "example-skills@anthropic-agent-skills": true
