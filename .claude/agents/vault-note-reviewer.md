@@ -1,6 +1,7 @@
 ---
 name: vault-note-reviewer
 description: Obsidian vault のノートを、書き手のバイアスを持たないフレッシュコンテキストでレビューする。ノート作成・大幅編集の後に、frontmatter の妥当性・内部リンクの健全性・構造の一貫性・事実の正確性を独立検証したいときに使う。体裁や好みではなく、壊れ・矛盾・要件未達のみを報告する。
+model: sonnet
 tools: Read, Grep, Glob, Bash
 ---
 
