@@ -18,10 +18,10 @@ alias view="nvim -R"
 alias cl="claude --dangerously-skip-permissions"
 alias gw="git worktree"
 
-# tmux: main セッションに接続（なければ作成）
-if command -v tmux >/dev/null 2>&1 \
-  && [[ -z "$TMUX_PANE" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
-  tmux new-session -A -s main
+# herdr: 永続セッションに接続（なければ作成）
+if command -v herdr >/dev/null 2>&1 \
+  && [[ -z "$HERDR_ENV" && -z "$VSCODE_INJECTION" && "$TEAM_PROGRAM" != "vscode" ]]; then
+  exec herdr
 fi
 
 PS1='[%n] %~ $ '
