@@ -91,7 +91,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "claudeCode.preferredLocation": "panel",
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
-  "editor.accessibilitySupport": "auto",
+  "editor.accessibilitySupport": "on",
   "hediet.vscode-drawio.resizeImages": null,
   "json.schemaDownload.trustedDomains": {
     "https://raw.githubusercontent.com/": true,
