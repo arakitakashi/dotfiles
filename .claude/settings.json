@@ -195,8 +195,16 @@
     "example-skills@anthropic-agent-skills": true
   },
   "language": "japanese",
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
-  "fileCheckpointingEnabled": true
+  "fileCheckpointingEnabled": true,
+  "agentPushNotifEnabled": true,
+  "autoMemoryEnabled": false
 }
