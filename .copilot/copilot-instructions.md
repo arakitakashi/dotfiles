@@ -1,5 +1,14 @@
 # Global instructions
 
+## Git commit / push approval
+
+Regardless of the current approval mode (including autopilot / auto / `--allow-all-tools`), NEVER run `git commit`, `git push`, or any command that creates or publishes commits (e.g. `gh pr merge`, `git commit --amend`, force push) without asking the user first in the conversation and receiving explicit approval in this session.
+
+- Before committing: show a summary of the staged changes and the proposed commit message, then wait for the user's approval.
+- Before pushing: state the target remote/branch, then wait for the user's approval.
+- Approval is per-action, not per-session: approval for one commit does not cover later commits or pushes.
+- Read-only git commands (`status`, `diff`, `log`, `branch` listing) and local staging (`git add`) do not require approval.
+
 ## Compaction recovery
 
 A preCompact hook saves session state before every conversation compaction (manual `/compact` and automatic):
