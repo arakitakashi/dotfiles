@@ -1,16 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
   {
-    "key": "cmd+b",
-    "command": "HookyQR.beautify",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+/",
-    "command": "-vscode-easymotion.jumpToWord",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+alt+down",
     "command": "editor.action.moveLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
@@ -29,5 +19,13 @@
     "key": "alt+up",
     "command": "-editor.action.moveLinesUpAction",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\u001b\r"
+    },
+    "when": "terminalFocus"
   }
 ]

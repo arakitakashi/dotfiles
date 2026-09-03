@@ -1,0 +1,30 @@
+onboarding = false
+# herdr 設定 — tmux (~/dotfiles/tmux/.tmux.conf) の操作感を移植
+# デフォルト全体は `herdr --default-config`、検証は `herdr config check`
+
+[keys]
+# tmux と同じ prefix (C-a)
+prefix = "ctrl+a"
+
+# ペイン分割: tmux の bind \\ (左右分割) / bind - (上下分割) に対応
+# split_vertical = 左右に並ぶ分割、split_horizontal = 上下に積む分割
+split_vertical = ["prefix+v", "prefix+backslash"]
+split_horizontal = "prefix+minus"
+
+# タブ移動: tmux の bind C-h / C-l (ウィンドウ切替) に対応。デフォルトの n/p も残す
+next_tab = ["prefix+n", "prefix+ctrl+l"]
+previous_tab = ["prefix+p", "prefix+ctrl+h"]
+
+# ペイン移動はデフォルトの prefix+h/j/k/l (vim 風) をそのまま使用
+# リサイズは prefix+r で resize_mode に入り h/j/k/l で調整（tmux の prefix+H/J/K/L 相当）
+
+[ui.toast]
+# バックグラウンドのエージェントが完了/入力待ちになったら macOS 通知を出す
+delivery = "system"
+
+[experimental]
+# 日本語 IME 使用時に prefix コマンドが効かない場合は以下を有効化（macOS 専用・実験的機能）
+# switch_ascii_input_source_in_prefix = true
+# Claude Code など独自カーソル描画 TUI で IME 候補ウィンドウが追従しない場合は以下を有効化
+# reveal_hidden_cursor_for_cjk_ime = true
+# cjk_ime_agents = ["claude"]

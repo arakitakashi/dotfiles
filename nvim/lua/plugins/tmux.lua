@@ -13,6 +13,6 @@ return {
     { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
     { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
     { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    -- <c-\> は toggleterm の open_mapping と衝突するため割り当てない
   },
 }

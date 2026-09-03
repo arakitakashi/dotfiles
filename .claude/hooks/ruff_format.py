@@ -33,13 +33,15 @@ def main() -> int:
         (d for d in [target, *target.parents] if (d / "pyproject.toml").exists()),
         None,
     )
-    if root is None or shutil.which("uv") is None:
+    if root is None or shutil.which("uvx") is None:
         return 0  # uv プロジェクトでなければ何もしない
 
+    # uvx はプロジェクトの依存 sync をしないため、信頼できないリポジトリの
+    # pyproject.toml（ビルドフック等）経由でコードが実行されることがない
     for args in (["ruff", "format", str(target)], ["ruff", "check", "--fix", str(target)]):
         try:
             subprocess.run(
-                ["uv", "run", *args],
+                ["uvx", *args],
                 cwd=root,
                 capture_output=True,
                 timeout=60,

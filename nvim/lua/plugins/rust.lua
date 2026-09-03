@@ -1,39 +1,29 @@
 return {
   -- Conform.nvim: フォーマッター設定
+  -- 保存時フォーマットは LazyVim の autoformat が担うため format_on_save は設定しない
   {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft = opts.formatters_by_ft or {}
       opts.formatters_by_ft.rust = { "rustfmt" }
-
-      -- 保存時自動フォーマット
-      opts.format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      }
-
       return opts
     end,
   },
 
   -- Rustaceanvim: Rust LSP設定
+  -- on_attach は定義しない（LazyVim rust extra のキーマップを潰さないため）
   {
     "mrcjkb/rustaceanvim",
-    version = "^5",
     lazy = false,
     opts = {
       server = {
-        on_attach = function(client, bufnr)
-          -- 必要に応じて追加設定
-        end,
         default_settings = {
           ["rust-analyzer"] = {
             cargo = {
               allFeatures = true,
-              loadOutDirsFromCheck = true,
-              runBuildScripts = true,
+              buildScripts = { enable = true },
             },
-            checkOnSave = {
+            check = {
               allFeatures = true,
               command = "clippy",
               extraArgs = { "--no-deps" },
