@@ -16,15 +16,30 @@ next_tab = ["prefix+n", "prefix+ctrl+l"]
 previous_tab = ["prefix+p", "prefix+ctrl+h"]
 
 # ペイン移動はデフォルトの prefix+h/j/k/l (vim 風) をそのまま使用
-# リサイズは prefix+r で resize_mode に入り h/j/k/l で調整（tmux の prefix+H/J/K/L 相当）
+# リサイズ: prefix+r の resize_mode に加え、0.8.2 の 1 打リサイズ（tmux の prefix+H/J/K/L 相当）
+resize_pane_left = "prefix+shift+h"
+resize_pane_down = "prefix+shift+j"
+resize_pane_up = "prefix+shift+k"
+resize_pane_right = "prefix+shift+l"
+
+[ui]
+# 外側ターミナル (Ghostty) のウィンドウタイトルに現在のワークスペース/タブを表示（0.8.2）
+window_title = "{workspace} · {tab}"
+# エージェント状態を色ドットでなく静的な図形で表示し判別しやすくする（0.8.2）
+status_indicators = "symbols"
 
 [ui.toast]
 # バックグラウンドのエージェントが完了/入力待ちになったら macOS 通知を出す
+# terminal-notifier 導入済み（通知クリックで Ghostty をアクティブ化できる）
+# 注意: ペインクリックは bare Escape で Claude Code を中断しうる (#3480) ため、
+# 通知先へは prefix+o (open_notification_target) で移動する
 delivery = "system"
 
 [experimental]
-# 日本語 IME 使用時に prefix コマンドが効かない場合は以下を有効化（macOS 専用・実験的機能）
-# switch_ascii_input_source_in_prefix = true
-# Claude Code など独自カーソル描画 TUI で IME 候補ウィンドウが追従しない場合は以下を有効化
-# reveal_hidden_cursor_for_cjk_ime = true
-# cjk_ime_agents = ["claude"]
+# prefix モード中だけ ASCII レイアウトへ切替（IME ON でも prefix コマンドが効く。macOS 専用）
+# 既知の制約: Google 日本語入力は prefix 終了後に入力ソースが復元されない (#1221)
+switch_ascii_input_source_in_prefix = true
+# Claude Code など独自カーソル描画 TUI で IME 候補ウィンドウを追従させる
+# 対象を絞ることで vim ノーマルモード等に余分なカーソルが見える副作用を回避
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["claude", "copilot"]
