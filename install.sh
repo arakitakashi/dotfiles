@@ -49,11 +49,21 @@ link "$DOTFILES/zed/settings.json" "$HOME/.config/zed/settings.json"
 link "$DOTFILES/zed/keymap.json" "$HOME/.config/zed/keymap.json"
 
 # Claude Code（ユーザーレベル設定）
-link "$DOTFILES/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
-link "$DOTFILES/.claude/settings.json" "$HOME/.claude/settings.json"
-link "$DOTFILES/.claude/rules" "$HOME/.claude/rules"
-link "$DOTFILES/.claude/skills" "$HOME/.claude/skills"
-link "$DOTFILES/.claude/agents" "$HOME/.claude/agents"
-link "$DOTFILES/.claude/hooks" "$HOME/.claude/hooks"
+link "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
+link "$DOTFILES/claude/rules" "$HOME/.claude/rules"
+link "$DOTFILES/claude/skills" "$HOME/.claude/skills"
+link "$DOTFILES/claude/agents" "$HOME/.claude/agents"
+link "$DOTFILES/claude/hooks" "$HOME/.claude/hooks"
+link "$DOTFILES/claude/scripts" "$HOME/.claude/scripts"
+
+# Codex（認証情報や履歴を含む ~/.codex 全体はリンクしない）
+link "$DOTFILES/codex/AGENTS.md" "$HOME/.codex/AGENTS.md"
+link "$DOTFILES/codex/config.toml" "$HOME/.codex/config.toml"
+link "$DOTFILES/codex/agents" "$HOME/.codex/agents"
+link "$DOTFILES/codex/hooks" "$HOME/.codex/hooks"
+link "$DOTFILES/codex/hooks.json" "$HOME/.codex/hooks.json"
+link "$DOTFILES/codex/skills" "$HOME/.agents/skills"
+link "$DOTFILES/codex/AGENTS.md" "$HOME/AGENTS.md"
 
 echo "完了"
