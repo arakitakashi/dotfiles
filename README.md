@@ -33,6 +33,8 @@ git clone https://github.com/arakitakashi/dotfiles.git ~/dotfiles
 `AGENTS.md`、`config.toml`、`agents/`、`hooks/`、`hooks.json` を個別にリンクする。
 個人スキルは `codex/skills/` を `~/.agents/skills` に、共通指示は
 `codex/AGENTS.md` を `~/AGENTS.md` にもリンクする。
+コマンドの承認ルールは `codex/rules/` を `~/.codex/rules` にリンクする。
+許可範囲と Claude からの移植差分は [承認設定](codex/permissions.md) を参照。
 
 `config.toml` は現在のマシンの絶対パスやアプリが更新する設定を含む。
 別のマシンへ導入するときはパスを確認する。API キーなどの秘密情報は保存しない。

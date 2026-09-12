@@ -1,6 +1,7 @@
 model = "gpt-6-astra"
 model_reasoning_effort = "medium"
 notify = ["/Users/arakitakashi/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+approvals_reviewer = "auto_review"
 
 [projects."/Users/arakitakashi/git/my-note"]
 trust_level = "trusted"

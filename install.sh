@@ -63,6 +63,7 @@ link "$DOTFILES/codex/config.toml" "$HOME/.codex/config.toml"
 link "$DOTFILES/codex/agents" "$HOME/.codex/agents"
 link "$DOTFILES/codex/hooks" "$HOME/.codex/hooks"
 link "$DOTFILES/codex/hooks.json" "$HOME/.codex/hooks.json"
+link "$DOTFILES/codex/rules" "$HOME/.codex/rules"
 link "$DOTFILES/codex/skills" "$HOME/.agents/skills"
 link "$DOTFILES/codex/AGENTS.md" "$HOME/AGENTS.md"
 
