@@ -6,14 +6,14 @@ __pycache__/
 *.py[cod]
 
 # Claude harness のバックアップ（一時ファイル）
-.claude/backups/
+claude/backups/
 
 # Claude Code のマシンローカル状態
-.claude/settings.local.json
+claude/settings.local.json
 
 # Anthropic プロプライエタリライセンスのスキル（再配布不可、ローカル利用のみ）
-.claude/skills/pptx/
-.claude/skills/xlsx/
+claude/skills/pptx/
+claude/skills/xlsx/
 
 # ランタイム状態ファイル（個人情報・実行時に書き換わる）
 lazygit/state.yml
@@ -25,3 +25,16 @@ zed/conversations/
 
 # tmux プラグイン（install.sh で tpm を clone する）
 tmux/.tmux/plugins/
+
+# Codex のローカル状態を誤って配置した場合も追跡しない
+codex/auth.json
+codex/backups/
+codex/cache/
+codex/log/
+codex/plugins/
+codex/sessions/
+codex/tmp/
+codex/*.sqlite*
+codex/*.jsonl
+codex/.codex-global-state.json*
+codex/skills/.system/

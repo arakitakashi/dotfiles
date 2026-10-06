@@ -1,6 +1,6 @@
 # Copilot CLI 設定（compact 対策）
 
-Claude Code の compact 対策（`dotfiles/.claude/` の compact-prep skill + hook 群）を
+Claude Code の compact 対策（`dotfiles/claude/` の compact-prep skill + hook 群）を
 GitHub Copilot CLI へ移植したもの。2026-07-05 に v1.0.68 で実機検証済み。
 
 ## 設計（Claude Code 版との違い）
