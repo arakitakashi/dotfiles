@@ -1,0 +1,56 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/arakitakashi/.codex/hooks/ruff_format.py'"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/arakitakashi/.codex/hooks/compaction-recovery.sh'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/arakitakashi/.codex/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/arakitakashi/.codex/hooks/userpromptsubmit-compaction-recovery.sh'"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/arakitakashi/.codex/hooks/userpromptsubmit-compact-prep-reminder.sh'"
+          }
+        ]
+      }
+    ]
+  }
+}
