@@ -1,0 +1,125 @@
+/*
+ * テーマ。3 つのプリセット（paper / slate / studio）× ライト・ダーク。
+ * 規則:
+ *   - 背景は純白・純黒にしない。面（bg < surface < card）と影は同じ色温度に寄せる
+ *   - 押せるものは ink の輪郭 + ぼかしのない影（--pop）。面は柔らかい影（--soft）。この 2 系統を混ぜない
+ *   - 文字色は card の上で 4.5:1 以上（scripts/validate-content.mjs が検査する）
+ * 新しいテーマは、このブロックを 1 つ複製して値を変える。
+ */
+
+/* ───── paper: 生成りの紙とマリーゴールド。温かい・手描きの題材に ───── */
+:root, :root[data-palette='paper'] {
+  --bg: #ece8de; --surface: #f4f1e9; --card: #faf8f2; --raised: #ffffff;
+  --ink: #1f1d1a; --ink-2: #3d3a34; --muted: #5d584f; --muted-2: #68625a;
+  --line: #ddd7c9; --line-strong: #bdb6a6;
+  --accent: #ffd45c; --accent-tile: #fff1c2; --on-accent: #1f1d1a;
+  --code-bg: #efebdf; --grid: #9c8f77; --shade: 62 48 26;
+  --good: #2f8f46; --warn: #b26a00; --bad: #c8372d;
+  --good-bg: #d9efd3; --warn-bg: #fde6b4; --bad-bg: #f9d6d0;
+  --focus: #1f1d1a;
+}
+:root[data-theme='dark'], :root[data-theme='dark'][data-palette='paper'] {
+  --bg: #1c1a17; --surface: #23201c; --card: #2a2722; --raised: #34302a;
+  --ink: #f1eadc; --ink-2: #d9d1c0; --muted: #b0a797; --muted-2: #9c9383;
+  --line: #3a362f; --line-strong: #585246;
+  --accent: #e2b53a; --accent-tile: #4a3d17; --on-accent: #1c1a17;
+  --code-bg: #332f29; --grid: #8a7d66; --shade: 0 0 0;
+  --good: #7fd08a; --warn: #f0b458; --bad: #ff8d80;
+  --good-bg: #24402a; --warn-bg: #4a3a16; --bad-bg: #52251f;
+  --focus: #f1eadc;
+}
+
+/* ───── slate: 冷たい灰とミント。インフラ・ネットワーク・計測の題材に ───── */
+:root[data-palette='slate'] {
+  --bg: #e4e9ee; --surface: #eef2f5; --card: #f7f9fb; --raised: #ffffff;
+  --ink: #17202a; --ink-2: #303b47; --muted: #4c5a68; --muted-2: #566471;
+  --line: #d3dbe3; --line-strong: #aab6c2;
+  --accent: #8fe3c2; --accent-tile: #d8f5ea; --on-accent: #17202a;
+  --code-bg: #e6ecf1; --grid: #7f93a6; --shade: 24 38 56;
+  --focus: #17202a;
+}
+:root[data-theme='dark'][data-palette='slate'] {
+  --bg: #12171d; --surface: #181e25; --card: #1f262e; --raised: #29313b;
+  --ink: #e8eef4; --ink-2: #cbd5df; --muted: #9fadba; --muted-2: #8b99a6;
+  --line: #2b343e; --line-strong: #46525f;
+  --accent: #4fc79d; --accent-tile: #173d32; --on-accent: #0f151a;
+  --code-bg: #262e37; --grid: #6f8296; --shade: 0 0 0;
+  --focus: #e8eef4;
+}
+
+/* ───── studio: 中立の灰白とコーラル。言語・アルゴリズム・抽象的な題材に ───── */
+:root[data-palette='studio'] {
+  --bg: #ebebe8; --surface: #f3f3f0; --card: #fafaf8; --raised: #ffffff;
+  --ink: #1b1b1d; --ink-2: #37373b; --muted: #58585e; --muted-2: #636369;
+  --line: #dadad5; --line-strong: #b5b5ae;
+  --accent: #ffa68c; --accent-tile: #ffe3d9; --on-accent: #1b1b1d;
+  --code-bg: #ecece8; --grid: #8f8f88; --shade: 40 40 44;
+  --focus: #1b1b1d;
+}
+:root[data-theme='dark'][data-palette='studio'] {
+  --bg: #161618; --surface: #1c1c1f; --card: #232327; --raised: #2e2e33;
+  --ink: #efeff1; --ink-2: #d2d2d7; --muted: #a6a6ae; --muted-2: #92929a;
+  --line: #303035; --line-strong: #4c4c53;
+  --accent: #f08a6c; --accent-tile: #4a251a; --on-accent: #161618;
+  --code-bg: #2a2a2f; --grid: #77777f; --shade: 0 0 0;
+  --focus: #efeff1;
+}
+
+/* ───── 2 系統の影 ───── */
+:root {
+  --pop: 2px 3px 0 var(--ink);
+  --pop-sm: 0 2px 0 var(--ink);
+  --soft: inset 0 1px 0 rgb(255 255 255 / .7), 0 14px 26px -20px rgb(var(--shade) / .5);
+  --soft-lg: inset 0 1px 0 rgb(255 255 255 / .8), 0 26px 50px -34px rgb(var(--shade) / .6);
+}
+:root[data-theme='dark'] {
+  --soft: inset 0 1px 0 rgb(255 255 255 / .05), 0 14px 26px -18px rgb(0 0 0 / .7);
+  --soft-lg: inset 0 1px 0 rgb(255 255 255 / .06), 0 26px 50px -30px rgb(0 0 0 / .8);
+}
+
+/*
+ * 役割色（Hue）。図のブロック・粒子・バッジ・コールアウトで共有する。
+ *   top = 明るい面 / side, side2 = 影の面 / line = 同系の線 / ink = 面の上の文字 / pk = 粒子 / tile = 淡い地
+ */
+:root {
+  --h-sand-top: hsl(38 52% 85%);   --h-sand-side: hsl(36 36% 70%);   --h-sand-side2: hsl(37 40% 77%);   --h-sand-line: hsl(36 34% 48%);   --h-sand-ink: hsl(34 42% 17%);   --h-sand-pk: hsl(34 78% 68%);   --h-sand-tile: hsl(40 48% 92%);
+  --h-green-top: hsl(104 44% 82%); --h-green-side: hsl(106 30% 66%); --h-green-side2: hsl(105 34% 73%); --h-green-line: hsl(108 32% 40%); --h-green-ink: hsl(110 42% 15%); --h-green-pk: hsl(108 50% 62%); --h-green-tile: hsl(100 42% 91%);
+  --h-blue-top: hsl(211 76% 86%);  --h-blue-side: hsl(213 48% 70%);  --h-blue-side2: hsl(212 54% 77%);  --h-blue-line: hsl(214 50% 44%);  --h-blue-ink: hsl(216 52% 17%);  --h-blue-pk: hsl(211 82% 66%);  --h-blue-tile: hsl(210 70% 94%);
+  --h-violet-top: hsl(262 68% 89%); --h-violet-side: hsl(262 40% 74%); --h-violet-side2: hsl(262 46% 81%); --h-violet-line: hsl(262 40% 50%); --h-violet-ink: hsl(264 44% 20%); --h-violet-pk: hsl(262 72% 72%); --h-violet-tile: hsl(262 60% 95%);
+  --h-amber-top: hsl(45 92% 79%);  --h-amber-side: hsl(41 66% 62%);  --h-amber-side2: hsl(43 74% 70%);  --h-amber-line: hsl(38 70% 38%);  --h-amber-ink: hsl(34 60% 15%);  --h-amber-pk: hsl(42 94% 60%);  --h-amber-tile: hsl(46 88% 91%);
+  --h-red-top: hsl(8 82% 87%);     --h-red-side: hsl(8 54% 71%);     --h-red-side2: hsl(8 60% 78%);     --h-red-line: hsl(6 56% 46%);     --h-red-ink: hsl(6 58% 21%);     --h-red-pk: hsl(6 84% 66%);     --h-red-tile: hsl(10 78% 95%);
+  --h-teal-top: hsl(172 46% 80%);  --h-teal-side: hsl(174 32% 63%);  --h-teal-side2: hsl(173 36% 70%);  --h-teal-line: hsl(176 44% 32%);  --h-teal-ink: hsl(178 48% 13%);  --h-teal-pk: hsl(172 56% 56%);  --h-teal-tile: hsl(170 44% 91%);
+  --h-rose-top: hsl(338 74% 89%);  --h-rose-side: hsl(338 46% 74%);  --h-rose-side2: hsl(338 52% 81%);  --h-rose-line: hsl(338 46% 48%);  --h-rose-ink: hsl(338 48% 21%);  --h-rose-pk: hsl(338 78% 70%);  --h-rose-tile: hsl(338 70% 95%);
+  --h-slate-top: hsl(214 20% 86%); --h-slate-side: hsl(214 14% 70%); --h-slate-side2: hsl(214 16% 77%); --h-slate-line: hsl(214 14% 46%); --h-slate-ink: hsl(216 22% 19%); --h-slate-pk: hsl(214 20% 66%); --h-slate-tile: hsl(214 20% 94%);
+}
+:root[data-theme='dark'] {
+  --h-sand-top: hsl(36 26% 36%);   --h-sand-side: hsl(34 22% 22%);   --h-sand-side2: hsl(35 24% 28%);   --h-sand-line: hsl(36 26% 60%);   --h-sand-ink: hsl(40 50% 92%);   --h-sand-pk: hsl(34 70% 62%);   --h-sand-tile: hsl(36 18% 21%);
+  --h-green-top: hsl(106 24% 32%); --h-green-side: hsl(108 22% 19%); --h-green-side2: hsl(107 23% 25%); --h-green-line: hsl(106 30% 58%); --h-green-ink: hsl(100 50% 91%); --h-green-pk: hsl(108 46% 58%); --h-green-tile: hsl(108 20% 19%);
+  --h-blue-top: hsl(213 36% 38%);  --h-blue-side: hsl(215 34% 22%);  --h-blue-side2: hsl(214 35% 29%);  --h-blue-line: hsl(212 50% 66%);  --h-blue-ink: hsl(210 70% 93%);  --h-blue-pk: hsl(211 76% 64%);  --h-blue-tile: hsl(214 28% 21%);
+  --h-violet-top: hsl(262 30% 41%); --h-violet-side: hsl(263 28% 24%); --h-violet-side2: hsl(262 29% 31%); --h-violet-line: hsl(262 48% 72%); --h-violet-ink: hsl(262 70% 94%); --h-violet-pk: hsl(262 68% 72%); --h-violet-tile: hsl(262 22% 23%);
+  --h-amber-top: hsl(42 44% 36%);  --h-amber-side: hsl(40 42% 20%);  --h-amber-side2: hsl(41 43% 27%);  --h-amber-line: hsl(43 66% 60%);  --h-amber-ink: hsl(46 80% 92%);  --h-amber-pk: hsl(42 88% 58%);  --h-amber-tile: hsl(42 32% 20%);
+  --h-red-top: hsl(8 38% 38%);     --h-red-side: hsl(8 36% 22%);     --h-red-side2: hsl(8 37% 29%);     --h-red-line: hsl(8 66% 68%);     --h-red-ink: hsl(10 80% 94%);    --h-red-pk: hsl(6 80% 66%);     --h-red-tile: hsl(8 30% 21%);
+  --h-teal-top: hsl(174 30% 30%);  --h-teal-side: hsl(176 30% 17%);  --h-teal-side2: hsl(175 30% 23%);  --h-teal-line: hsl(172 42% 56%);  --h-teal-ink: hsl(170 50% 91%);  --h-teal-pk: hsl(172 52% 52%);  --h-teal-tile: hsl(175 26% 18%);
+  --h-rose-top: hsl(338 32% 40%);  --h-rose-side: hsl(338 30% 24%);  --h-rose-side2: hsl(338 31% 31%);  --h-rose-line: hsl(338 56% 72%);  --h-rose-ink: hsl(338 70% 94%);  --h-rose-pk: hsl(338 72% 70%);  --h-rose-tile: hsl(338 24% 22%);
+  --h-slate-top: hsl(214 14% 36%); --h-slate-side: hsl(214 14% 21%); --h-slate-side2: hsl(214 14% 28%); --h-slate-line: hsl(214 18% 64%); --h-slate-ink: hsl(214 30% 93%); --h-slate-pk: hsl(214 20% 62%); --h-slate-tile: hsl(214 12% 21%);
+}
+
+/* data-hue を付けた要素は、その色を --hue-* として使える */
+[data-hue='sand'] { --hue-top: var(--h-sand-top); --hue-line: var(--h-sand-line); --hue-ink: var(--h-sand-ink); --hue-tile: var(--h-sand-tile); --hue-pk: var(--h-sand-pk); }
+[data-hue='green'] { --hue-top: var(--h-green-top); --hue-line: var(--h-green-line); --hue-ink: var(--h-green-ink); --hue-tile: var(--h-green-tile); --hue-pk: var(--h-green-pk); }
+[data-hue='blue'] { --hue-top: var(--h-blue-top); --hue-line: var(--h-blue-line); --hue-ink: var(--h-blue-ink); --hue-tile: var(--h-blue-tile); --hue-pk: var(--h-blue-pk); }
+[data-hue='violet'] { --hue-top: var(--h-violet-top); --hue-line: var(--h-violet-line); --hue-ink: var(--h-violet-ink); --hue-tile: var(--h-violet-tile); --hue-pk: var(--h-violet-pk); }
+[data-hue='amber'] { --hue-top: var(--h-amber-top); --hue-line: var(--h-amber-line); --hue-ink: var(--h-amber-ink); --hue-tile: var(--h-amber-tile); --hue-pk: var(--h-amber-pk); }
+[data-hue='red'] { --hue-top: var(--h-red-top); --hue-line: var(--h-red-line); --hue-ink: var(--h-red-ink); --hue-tile: var(--h-red-tile); --hue-pk: var(--h-red-pk); }
+[data-hue='teal'] { --hue-top: var(--h-teal-top); --hue-line: var(--h-teal-line); --hue-ink: var(--h-teal-ink); --hue-tile: var(--h-teal-tile); --hue-pk: var(--h-teal-pk); }
+[data-hue='rose'] { --hue-top: var(--h-rose-top); --hue-line: var(--h-rose-line); --hue-ink: var(--h-rose-ink); --hue-tile: var(--h-rose-tile); --hue-pk: var(--h-rose-pk); }
+[data-hue='slate'] { --hue-top: var(--h-slate-top); --hue-line: var(--h-slate-line); --hue-ink: var(--h-slate-ink); --hue-tile: var(--h-slate-tile); --hue-pk: var(--h-slate-pk); }
+
+/* ステップの役割 → 色。タイムラインの点・バッジ・検索結果で共有する */
+[data-chapter='setup'] { --ch-top: var(--h-sand-top); --ch-ink: var(--h-sand-ink); --ch-pk: var(--h-sand-pk); }
+[data-chapter='problem'] { --ch-top: var(--h-red-top); --ch-ink: var(--h-red-ink); --ch-pk: var(--h-red-pk); }
+[data-chapter='solution'] { --ch-top: var(--h-green-top); --ch-ink: var(--h-green-ink); --ch-pk: var(--h-green-pk); }
+[data-chapter='technique'] { --ch-top: var(--h-blue-top); --ch-ink: var(--h-blue-ink); --ch-pk: var(--h-blue-pk); }
+[data-chapter='tradeoff'] { --ch-top: var(--h-amber-top); --ch-ink: var(--h-amber-ink); --ch-pk: var(--h-amber-pk); }
+[data-chapter='insight'] { --ch-top: var(--h-violet-top); --ch-ink: var(--h-violet-ink); --ch-pk: var(--h-violet-pk); }
+[data-chapter='recap'] { --ch-top: var(--ink); --ch-ink: var(--card); --ch-pk: var(--ink); }

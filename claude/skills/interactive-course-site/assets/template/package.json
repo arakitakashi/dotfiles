@@ -1,0 +1,24 @@
+{
+  "name": "interactive-course",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "test": "vitest run",
+    "validate": "node scripts/validate-content.mjs",
+    "capture": "node scripts/capture-steps.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "check": "npm run validate && npm test && npm run build && npm run smoke"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans-jp": "^5.3.1",
+    "playwright": "^1.49.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.0"
+  }
+}

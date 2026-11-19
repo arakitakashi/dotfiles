@@ -1,0 +1,10 @@
+/*
+ * Web フォント。和文は字形ごとに細かく分割されていて、ページに現れた文字のぶんだけ取得される。
+ * 定義そのものが大きいので、この CSS は main.ts から遅延読み込みする（届くまではシステムの書体で表示）。
+ * 書体を替えるときは、ここと tokens.css の --font / --mono を合わせて変える。
+ */
+@import '@fontsource/ibm-plex-sans-jp/400.css';
+@import '@fontsource/ibm-plex-sans-jp/500.css';
+@import '@fontsource/ibm-plex-sans-jp/700.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+@import '@fontsource/ibm-plex-mono/latin-700.css';

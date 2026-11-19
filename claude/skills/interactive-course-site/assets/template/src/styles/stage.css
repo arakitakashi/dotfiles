@@ -1,0 +1,151 @@
+/* ───────── 図の枠 ───────── */
+.stage {
+  position: relative; flex: 1; min-height: 260px; border-radius: var(--r-card); overflow: hidden;
+  background: var(--card); border: 1px solid var(--line); box-shadow: var(--soft);
+}
+/* 図は host の中だけに描く。はみ出しを許すと、指標の帯や操作ボタンの下に図が潜り込む */
+.stage__host { position: absolute; inset: 62px 6px 48px; touch-action: pan-y; overflow: hidden; }
+.stage__host.is-zoomed { cursor: grab; touch-action: none; }
+.stage__host.is-dragging { cursor: grabbing; }
+.stage-svg, .stage-grid { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage-svg { font-family: var(--font); user-select: none; }
+.stage-grid { color: var(--grid); mask-image: radial-gradient(closest-side, #000 30%, transparent 96%); }
+.stage-grid path { stroke: currentColor; stroke-width: .9; opacity: .34; }
+.stage-grid circle { fill: currentColor; opacity: .4; }
+
+/* 指標 HUD: レッスン固有の計器。数値・状態色・変化の瞬間の光で「何が良くなり何が悪くなったか」を伝える */
+.hud { position: absolute; z-index: 3; top: 10px; inset-inline: 10px; display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; padding: 2px 2px 6px; }
+.chip {
+  position: relative; display: grid; gap: 1px; min-width: 104px; padding: 5px 11px 6px 14px; flex: none;
+  border-radius: var(--r-ctl); background: var(--raised); border: 1.5px solid var(--line-strong);
+}
+.chip::before { content: ''; position: absolute; inset-block: 6px; inset-inline-start: 5px; width: 3.5px; border-radius: 2px; background: var(--line-strong); transition: background var(--d-ui); }
+.chip[data-tone='good']::before { background: var(--good); }
+.chip[data-tone='warn']::before { background: var(--warn); }
+.chip[data-tone='bad']::before { background: var(--bad); }
+.chip__label { display: flex; align-items: center; gap: 4px; font-size: 0.6875rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.chip__value { font: 700 0.9375rem/1.25 var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chip[data-tone='warn'] .chip__value { color: var(--warn); }
+.chip[data-tone='bad'] .chip__value { color: var(--bad); }
+.chip.is-flash { animation: chip-flash 1.3s ease-out; }
+@keyframes chip-flash {
+  0% { box-shadow: 0 0 0 0 var(--accent); border-color: var(--ink); transform: translateY(-2px); }
+  35% { box-shadow: 0 0 0 5px var(--accent); }
+  100% { box-shadow: 0 0 0 9px transparent; transform: none; }
+}
+
+.stage__tools { position: absolute; z-index: 3; bottom: 10px; inset-inline-end: 12px; display: flex; gap: 6px; }
+.tool {
+  display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: var(--r-ctl);
+  background: var(--raised); border: 1.5px solid var(--ink-2); box-shadow: var(--pop-sm); font-size: var(--fs-micro); font-weight: 700;
+  transition: transform var(--d-fast), box-shadow var(--d-fast), background var(--d-fast);
+}
+.tool:hover { background: var(--card); }
+.tool.is-on, .tool--fit { background: var(--accent); color: var(--on-accent); border-color: var(--ink); }
+
+.legend { position: absolute; z-index: 3; bottom: 16px; inset-inline: 14px 330px; display: flex; gap: var(--s4); overflow-x: auto; scrollbar-width: none; font-size: var(--fs-micro); color: var(--muted); white-space: nowrap; }
+.legend__item { display: flex; align-items: center; gap: 6px; }
+.legend__mark { width: 11px; height: 11px; flex: none; background: var(--pk); border: 1.5px solid var(--ink); border-radius: 50%; }
+.legend__mark--square { border-radius: 3px; }
+.legend__mark--diamond { border-radius: 2px; transform: rotate(45deg) scale(.86); }
+.legend__mark--ring { background: var(--card); border: 3px solid var(--pk); }
+
+/* ───────── 図の中身。色は役割（--h-*）と ink だけで組む ───────── */
+.ent-shadow { fill: rgb(var(--shade)); opacity: .2; filter: url(#soft); }
+:root[data-theme='dark'] .ent-shadow { opacity: .5; }
+.outline { fill: none; stroke: var(--ink); stroke-width: 1.9; stroke-linejoin: round; }
+.face-line { fill: none; stroke: var(--ink); stroke-width: 1.1; stroke-linecap: round; opacity: .3; }
+.ent-label { font-weight: 700; }
+.ent-sub { font-weight: 500; opacity: .78; }
+.ent-sub--below { fill: var(--muted); opacity: 1; }
+.g-ico { stroke: var(--ink); }
+.ent .g-ico { stroke: var(--ink); }
+
+.pill__drop { fill: var(--ink); }
+.pill__face { fill: var(--raised); stroke: var(--ink); stroke-width: 1.4; }
+.pill text { fill: var(--ink); font-weight: 700; }
+.pill--good .pill__face { fill: var(--good-bg); }
+.pill--warn .pill__face { fill: var(--warn-bg); }
+.pill--bad .pill__face { fill: var(--bad-bg); }
+
+.gauge text { fill: var(--ink); font-family: var(--mono); font-weight: 700; }
+.gauge__track { fill: var(--line); }
+.gauge__fill { fill: var(--good); }
+.gauge--warn .gauge__fill { fill: var(--warn); }
+.gauge--bad .gauge__fill { fill: var(--bad); }
+.tag-badge rect { fill: var(--bad); stroke: var(--ink); stroke-width: 1.3; }
+.tag-badge text { fill: #fff; font-weight: 700; letter-spacing: .04em; }
+
+.flat-drop, .card-drop { fill: var(--ink); }
+.flat-face, .actor__face { stroke: var(--ink); stroke-width: 1.7; }
+.flat-ico { stroke: var(--ink); stroke-width: 1.2; }
+.zone { fill-opacity: .3; stroke-width: 1.4; stroke-dasharray: 6 5; stroke-linejoin: round; }
+
+.card-face { fill: var(--raised); stroke: var(--ink); stroke-width: 1.6; }
+.card-title { fill: var(--muted); font-weight: 700; letter-spacing: .04em; }
+.card-sub { fill: var(--muted); font-family: var(--mono); font-weight: 500; }
+.card-rule { stroke: var(--line-strong); stroke-width: 1; }
+.card-rule--ink { stroke: var(--ink); stroke-width: 1.4; }
+.card-head { fill: var(--muted); font-weight: 700; letter-spacing: .03em; }
+.card-key { fill: var(--ink-2); font-weight: 500; }
+.card-val { fill: var(--ink); font-family: var(--mono); font-weight: 700; }
+.card-code { fill: var(--ink-2); font-family: var(--mono); font-weight: 500; }
+.card-code.is-on { fill: var(--on-accent); font-weight: 700; }
+.line-mark, .row-total { fill: var(--accent); }
+:root[data-theme='dark'] .row-total { fill: var(--accent-tile); }
+.tone-good { fill: var(--good); }
+.tone-warn { fill: var(--warn); }
+.tone-bad { fill: var(--bad); }
+.tone-bg-good { fill: var(--good); }
+.tone-bg-warn { fill: var(--warn); }
+.tone-bg-bad { fill: var(--bad); }
+.tone-bg-neutral { fill: var(--muted-2); }
+.slot { fill: none; stroke: var(--line-strong); stroke-width: 1.3; stroke-dasharray: 3 3.500; }
+.slot-item rect { stroke: var(--ink); stroke-width: 1.4; }
+.slot-item text { font-weight: 700; }
+.slot-item.is-new { animation: item-in .5s var(--e-spring) both; transform-box: fill-box; transform-origin: center; }
+@keyframes item-in { from { opacity: 0; transform: scale(.5); } }
+
+.link__line { fill: none; stroke: var(--ink); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.link--dashed .link__line { stroke-dasharray: 5 5; }
+.link--off .link__line { stroke: var(--muted-2); stroke-width: 1.500; stroke-dasharray: 4 5.500; opacity: .7; }
+.link--beat .link__line { stroke: var(--good); stroke-dasharray: 1.500 6; animation: beat 1.2s linear infinite; }
+.link--cut .link__line { stroke: var(--bad); stroke-dasharray: 7 6; }
+@keyframes beat { to { stroke-dashoffset: -15; } }
+.arr { fill: var(--ink); }
+.arr--off { fill: var(--muted-2); }
+.link__label--off, .link__label--cut { opacity: .8; }
+
+.pkt > * { fill: var(--pk); stroke: var(--ink); stroke-width: 1.5; }
+.pkt--ring > * { fill: var(--raised); stroke: var(--pk); stroke-width: 3; }
+.fx--pop circle { fill: none; stroke: var(--good); stroke-width: 2.200; }
+.fx--burst circle { fill: var(--bad); stroke: var(--ink); stroke-width: 1.3; }
+.fx--burst path { stroke: #fff; stroke-width: 2; stroke-linecap: round; fill: none; }
+.fx-spot { fill: var(--accent); opacity: 0; filter: url(#soft); pointer-events: none; }
+
+/* エンティティの状態 */
+.ent[data-state='down'] .ent__in { filter: grayscale(1); opacity: .5; }
+.ent[data-state='dim'] .ent__in { opacity: .38; }
+.ent[data-state='ghost'] .ent__in { opacity: .5; }
+.ent[data-state='ghost'] .outline, .ent[data-state='ghost'] .flat-face, .ent[data-state='ghost'] .card-face { stroke-dasharray: 5 4; }
+.ent[data-state='ghost'] :is(.ent-shadow, .flat-drop, .card-drop) { display: none; }
+.ent[data-state='hot'] :is(.outline, .flat-face, .card-face) { stroke: var(--bad); stroke-width: 2.600; animation: hot 1.1s ease-in-out infinite; }
+.ent[data-state='focus'] :is(.outline, .flat-face, .card-face) { stroke-width: 2.800; }
+.ent[data-state='focus'] { filter: drop-shadow(0 0 7px var(--accent)); }
+@keyframes hot { 50% { stroke-opacity: .35; } }
+
+/* ───────── 小さい画面 ───────── */
+@media (max-width: 899px), (max-height: 599px) {
+  :root { --stage-h: clamp(240px, 38dvh, 380px); }
+  /* 図を画面上部に貼り付ける。本文を読み進めても、動く図が常に見えている */
+  .stage { position: sticky; top: calc(var(--topbar) + 6px); z-index: 20; margin: 0 var(--s3); }
+  .stage { flex: none; height: var(--stage-h); box-shadow: 0 10px 20px -16px rgb(var(--shade) / .6); border: 1.5px solid var(--ink); }
+  .stage__host { inset: 58px 2px 42px; }
+  .hud { top: 7px; inset-inline: 7px 7px; }
+  .chip { min-width: 0; padding: 3px 9px 4px 12px; }
+  .chip__value { font-size: 0.8125rem; }
+  .stage__tools { bottom: 5px; inset-inline-end: 6px; gap: 4px; }
+  .tool span { display: none; }
+  .tool { width: 32px; height: 30px; padding: 0; justify-content: center; }
+  .legend { bottom: 11px; inset-inline: 10px 150px; }
+}
